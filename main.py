@@ -21,7 +21,7 @@ logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', datefmt=
 
 server = PI.PIServer()
 #We added this server definition here because we believe it is defined somewhere else when running in the terminal
-# and does not get used when in the PyCharm console
+# and does not get used when running in the PyCharm console
 app = Flask(__name__)
 
 @app.route('/')
