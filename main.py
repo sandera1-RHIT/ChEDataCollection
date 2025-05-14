@@ -21,6 +21,7 @@ logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', datefmt=
 
 server = PI.PIServer()
 app = Flask(__name__)
+print('testing stuff')
 
 @app.route('/')
 @app.route('/home')
