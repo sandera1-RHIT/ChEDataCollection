@@ -1,0 +1,70 @@
+{%  extends 'base.html' %}
+{% block title %}
+    Rose-Hulman ChE Lab
+{% endblock %}
+
+
+        </select>
+        </center>
+
+        <br>
+
+        <center>
+        <label for="start">Date:</label>
+        <input type="date" id="start" name="start" min="2000-01-01" max="2100-01-01" required>
+        </center>
+
+        <br>
+
+        <center>
+        <label for="starttime">Start Time:</label>
+        <input type="time" id="starttime" name="starttime" min="0:00" max="23:59" required onchange="buttonchange()">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <label for="endtime">End time:</label>
+        <input type="time" id="endtime" name="endtime" min="0" max="23:59" required onchange="buttonchange()">
+
+        </center>
+        <br>
+
+        <center>
+            <select id="interval" name="interval" required>
+                <option value="">Select your time interval</option>
+                <option value="1s">1 Second</option>
+                <option value="10s">10 Seconds</option>
+                <option value="30s">30 Seconds</option>
+            </select>
+        </center>
+        <br>
+        <br>
+        <br>
+        <center>
+            <h5><input id="submitbutton" type="submit" value="Download Data" disabled=""></h5>
+        </center>
+    </form>
+
+    <style>
+        body{
+            background-color: #212121;
+            color: white
+        }
+    </style>
+
+
+    <script type="text/javascript">
+        function buttonchange(){
+            var submitbutton = document.getElementById("submitbutton");
+
+            if (document.getElementById("starttime").value < document.getElementById("endtime").value) {
+                submitbutton.disabled = false;
+            } else {
+                submitbutton.disabled = true;
+            }
+        }
+    </script>
+
+    <center>
+    <br><br>Written by Eddie Barry (RHIT ChE Class of 2022) and Dr. Dave
+    <br></br>Direct downloads are available at the /csv endpoint.
+    </center>
+
+{% endblock %}
