@@ -7,22 +7,14 @@
     <br>
     <br>
     <center>
-    <h3>Change this text later to explain the page</h3>
+    <h3>Select from the following Instruments list those you wish to collect data from</h3>
+    <h3>After the list, input the time for the data you wish to collect</h3>
     </center>
 
     <br>
-    <form action = "{{ url_for('download') }}" method = "post">
-        <!--this above will likely need to be changed-->
-        <br>
+    <form action = "{{ url_for('download') }}" method = "POST">
         <center>
-        <!--
-        <select id="instruments" name="instruments" multiple onchange="buttonchange()">
-            {% for option in options %}
-                <option value="{{ option }}">{{ option }}</option>
-            {% endfor %}
-        </select>
-        -->
-         <div id="instruments">
+         <div style="display:inline-block; text-align: left;" id="instruments">
         {% for option in options %}
             <label>
                 <input type="checkbox" name="instruments" value="{{ option }}" onchange="buttonchange()">
@@ -106,7 +98,8 @@
 
     <center>
     <br><br>Written by Eddie Barry (RHIT ChE Class of 2022) and Dr. Dave
-    <br></br>Direct downloads are available at the /csv endpoint.
+    <br><br>Redesigned by Andrew Sander (RHIT ChE Class of 2026) and Ben Homan (RHIT ChE Class of 2025)
+    <br><br>Direct downloads are available at the /csv endpoint.
     </center>
 
 {% endblock %}

@@ -6,7 +6,8 @@ from plotly.validators.surface.contours.x import project
 
 CONST_NAME = "CHE PI Data Portal"
 CONST_VER = "0.10"
-CONST_AUTHORS = "Eddie Barry (RHIT ChE, class of 2022) and David Henthorn, RHIT Professor"
+CONST_AUTHORS = ("Eddie Barry (RHIT ChE, class of 2022) and David Henthorn, RHIT Professor; "
+                 "Redesigned by Andrew Sander (RHIT ChE, class of 2026) and Ben Homan (RHIT ChE, class of 2025)")
 
 # Requires the PIconnect package be installed. This package will install under various OS's, but
 # it only functions on Windows machines with the PI SDK installed and properly setup
