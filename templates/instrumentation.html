@@ -3,10 +3,36 @@
     Rose-Hulman ChE Lab
 {% endblock %}
 
+{% block body %}
+    <br>
+    <br>
+    <center>
+    <h3>Change this text later to explain the page</h3>
+    </center>
 
+    <br>
+    <form action = "{{ url_for('download') }}" method = "post">
+        <!--this above will likely need to be changed-->
+        <br>
+        <center>
+        <!--
+        <select id="instruments" name="instruments" multiple onchange="buttonchange()">
+            {% for option in options %}
+                <option value="{{ option }}">{{ option }}</option>
+            {% endfor %}
         </select>
+        -->
+         <div id="instruments">
+        {% for option in options %}
+            <label>
+                <input type="checkbox" name="instruments" value="{{ option }}" onchange="buttonchange()">
+                {{ option }}
+            </label><br>
+        {% endfor %}
+    </div>
         </center>
 
+        <br>
         <br>
 
         <center>
@@ -22,24 +48,27 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <label for="endtime">End time:</label>
         <input type="time" id="endtime" name="endtime" min="0" max="23:59" required onchange="buttonchange()">
-
         </center>
-        <br>
 
+        <br>
         <center>
-            <select id="interval" name="interval" required>
+            <select id="interval" name="interval" required onchange="buttonchange()">
                 <option value="">Select your time interval</option>
                 <option value="1s">1 Second</option>
+                <option value="5s">5 Seconds</option>
                 <option value="10s">10 Seconds</option>
                 <option value="30s">30 Seconds</option>
             </select>
         </center>
+
         <br>
         <br>
         <br>
+
         <center>
             <h5><input id="submitbutton" type="submit" value="Download Data" disabled=""></h5>
         </center>
+
     </form>
 
     <style>
@@ -53,8 +82,21 @@
     <script type="text/javascript">
         function buttonchange(){
             var submitbutton = document.getElementById("submitbutton");
-
+            var button_Count = 0;
             if (document.getElementById("starttime").value < document.getElementById("endtime").value) {
+                button_Count = button_Count + 1;
+            }
+            if (document.getElementById("interval").value != "") {
+                button_Count = button_Count + 1;
+            }
+            if (document.getElementById("instruments").value != "") {
+                button_Count = button_Count + 1;
+                console.log(document.getElementById("instruments").selected)
+            }
+            if (document.getElementById("start").value != "") {
+                button_Count = button_Count + 1;
+            }
+            if (button_Count == 4) {
                 submitbutton.disabled = false;
             } else {
                 submitbutton.disabled = true;
