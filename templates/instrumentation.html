@@ -21,9 +21,15 @@
 
 
     <br>
-    <form action = "{{ url_for('download') }}" method = "POST">
+    <form action = "{{ url_for('download2') }}" method = "POST">
         <center>
-
+        <select id="project" name="project" required hidden>
+                <option value="{{ project }}">Project Area {{ project }}</option>
+            </select>
+        </center>
+    <br>
+    <br>
+        <center>
          <div style="display:inline-block; text-align: left;" id="instruments">
         {% for option in options %}
             <label>
@@ -89,6 +95,7 @@
 
 
     <script type="text/javascript">
+        var project = "{{ project }}";
         function buttonchange(){
             var submitbutton = document.getElementById("submitbutton");
             var button_Count = 0;
@@ -118,10 +125,8 @@
             allChecked = !allChecked;
             checkboxes.forEach(cb => cb.checked = allChecked);
 
-            // Optionally call your existing change handler
             buttonchange();
 
-            // Update button text
             document.querySelector('button[onclick="toggleCheckboxes()"]').textContent = allChecked ? 'Uncheck All' : 'Check All';
     }
     </script>

@@ -7,14 +7,14 @@
     <br>
     <br>
     <center>
-    <h3>Fill in the following fields to download your data</h3>
+    <h3>Select the project that you are requesting data from</h3>
 
     </center>
     <br>
-    <form action = "{{ url_for('download') }}" method = "post">
+    <form action = "{{ url_for('instrumentation') }}" method = "GET">
         <br>
         <center>
-        <select id="project" name="project" required>
+        <select id="project" name="project" required onchange="buttonchange()">
             <option value="">Select your Project</option>
 
             <option value="100">100 - Filter Press</option>
@@ -30,44 +30,12 @@
             <option value="750">750 - Tray Dryer</option>
             <option value="800">800 - Multipass HX</option>
             <option value="900">900 - Fluidized Bed</option>
-
-
         </select>
-        </center>
 
         <br>
-
-        <center>
-        <label for="start">Date:</label>
-        <input type="date" id="start" name="start" min="2000-01-01" max="2100-01-01" required>
-        </center>
-
         <br>
 
-        <center>
-        <label for="starttime">Start Time:</label>
-        <input type="time" id="starttime" name="starttime" min="0:00" max="23:59" required onchange="buttonchange()">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <label for="endtime">End time:</label>
-        <input type="time" id="endtime" name="endtime" min="0" max="23:59" required onchange="buttonchange()">
-
-        </center>
-        <br>
-
-        <center>
-            <select id="interval" name="interval" required>
-                <option value="">Select your time interval</option>
-                <option value="1s">1 Second</option>
-                <option value="5s">5 Seconds</option>
-                <option value="10s">10 Seconds</option>
-                <option value="30s">30 Seconds</option>
-            </select>
-        </center>
-        <br>
-        <br>
-        <br>
-        <center>
-            <h5><input id="submitbutton" type="submit" value="Download Data" disabled=""></h5>
+        <h5><input id="submitbutton" type="submit" value="Get Instruments" disabled=""></h5>
         </center>
     </form>
 
@@ -80,12 +48,12 @@
 
 
     <script type="text/javascript">
-        function buttonchange(){
+        function buttonchange() {
             var submitbutton = document.getElementById("submitbutton");
-
-            if (document.getElementById("starttime").value < document.getElementById("endtime").value) {
+            if (document.getElementById("project").value != "") {
                 submitbutton.disabled = false;
-            } else {
+            }
+            else {
                 submitbutton.disabled = true;
             }
         }
