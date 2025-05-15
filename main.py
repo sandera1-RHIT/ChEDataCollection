@@ -100,7 +100,7 @@ def download():
     df.dropna(how='all', axis=1, inplace=True)
 
     response = make_response(df.to_csv(date_format='%H:%M:%S'))
-    csvname = 'DATA FROM' + '-' + date + '.csv'
+    csvname = 'DATA-FROM' + '-' + date + '.csv'
     #We can change the name of the downloaded csv file by changing the above line of code
     response.headers['Content-Disposition'] = 'attachment; filename=' + csvname
     response.mimetype = 'text/csv'
