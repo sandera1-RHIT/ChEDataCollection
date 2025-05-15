@@ -14,7 +14,7 @@
     <form action = "{{ url_for('download') }}" method = "post">
         <br>
         <center>
-        <select id="project" name="project" required>
+        <select id="project" name="project" required onchange="buttonchange()">
             <option value="">Select your Project</option>
 
             <option value="100">100 - Filter Press</option>
@@ -39,7 +39,7 @@
 
         <center>
         <label for="start">Date:</label>
-        <input type="date" id="start" name="start" min="2000-01-01" max="2100-01-01" required>
+        <input type="date" id="start" name="start" min="2000-01-01" max="2100-01-01" required onchange="buttonchange()">
         </center>
 
         <br>
@@ -55,7 +55,7 @@
         <br>
 
         <center>
-            <select id="interval" name="interval" required>
+            <select id="interval" name="interval" required onchange="buttonchange()">
                 <option value="">Select your time interval</option>
                 <option value="1s">1 Second</option>
                 <option value="5s">5 Seconds</option>
@@ -82,8 +82,21 @@
     <script type="text/javascript">
         function buttonchange(){
             var submitbutton = document.getElementById("submitbutton");
-
+            var button_Count = 0;
             if (document.getElementById("starttime").value < document.getElementById("endtime").value) {
+                button_Count = button_Count + 1;
+            }
+            if (document.getElementById("interval").value != "") {
+                button_Count = button_Count + 1;
+            }
+            if (document.getElementById("project").value != "") {
+                button_Count = button_Count + 1;
+                console.log(document.getElementById("project").selected)
+            }
+            if (document.getElementById("start").value != "") {
+                button_Count = button_Count + 1;
+            }
+            if (button_Count == 4) {
                 submitbutton.disabled = false;
             } else {
                 submitbutton.disabled = true;
