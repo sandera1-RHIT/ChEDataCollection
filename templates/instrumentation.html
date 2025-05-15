@@ -7,13 +7,23 @@
     <br>
     <br>
     <center>
-    <h3>Select from the following Instruments list those you wish to collect data from</h3>
-    <h3>After the list, input the time for the data you wish to collect</h3>
+    <h3>Select the following Instruments you would like to collect data from.</h3>
     </center>
+
+    <br>
+    <br>
+
+    <center>
+    <h3>Project Area-{{ project }} Insruments:</h3>
+    </center>
+
+
+
 
     <br>
     <form action = "{{ url_for('download') }}" method = "POST">
         <center>
+
          <div style="display:inline-block; text-align: left;" id="instruments">
         {% for option in options %}
             <label>
@@ -22,8 +32,15 @@
             </label><br>
         {% endfor %}
     </div>
+        <br>
+        <button type="button" onclick="toggleCheckboxes()">Check All</button>
         </center>
 
+        <br>
+        <br>
+    <center>
+    <h3>Input the time period and frequency of the data collection.</h3>
+    </center>
         <br>
         <br>
 
@@ -94,6 +111,19 @@
                 submitbutton.disabled = true;
             }
         }
+        let allChecked = false;
+
+        function toggleCheckboxes() {
+            const checkboxes = document.querySelectorAll('input[name="instruments"]');
+            allChecked = !allChecked;
+            checkboxes.forEach(cb => cb.checked = allChecked);
+
+            // Optionally call your existing change handler
+            buttonchange();
+
+            // Update button text
+            document.querySelector('button[onclick="toggleCheckboxes()"]').textContent = allChecked ? 'Uncheck All' : 'Check All';
+    }
     </script>
 
     <center>
