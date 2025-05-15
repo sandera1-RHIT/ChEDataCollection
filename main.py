@@ -7,7 +7,7 @@ from plotly.validators.surface.contours.x import project
 CONST_NAME = "CHE PI Data Portal"
 CONST_VER = "0.10"
 CONST_AUTHORS = ("Eddie Barry (RHIT ChE, class of 2022) and David Henthorn, RHIT Professor; "
-                 "Redesigned by Andrew Sander (RHIT ChE, class of 2026) and Ben Homan (RHIT ChE, class of 2025)")
+                 "Redesigned by Andrew Sander (RHIT ChE, class of 2026) and Benjamin Homan (RHIT ChE, class of 2025)")
 
 # Requires the PIconnect package be installed. This package will install under various OS's, but
 # it only functions on Windows machines with the PI SDK installed and properly setup
@@ -39,7 +39,7 @@ def instrumentation():
     project_num = "*" + project + "*"
     logging.info("Received request for project %s from IP %s", project, request.remote_addr)
 
-    if project_num =="*300#":
+    if project_num =="*300*":
         search_term = "*-3*"
     else:
         search_term = project_num
