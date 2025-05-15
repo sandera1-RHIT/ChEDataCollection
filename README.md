@@ -11,7 +11,22 @@ Clients for Python, Python Notebooks (Jupyter), Julia, and Matlab are included.
 
 # UPDATED WEBSITE
 
-The first page (/home) will have a drop-down to select the project that you want to download from.  The second page of the website loads the available instrumentation and then allows the selection of them in some way we will need to decide on. After the selection of the wanted instrumentation, you can select the date and time information in a way similar to what already exists. 
+A button on the top ribbon was added that takes you to the new website address.
+
+The new address allows the selection of the available projects in Unit Operations Lab.
+When you press the button "Get Instruments" it sends a request to the UOLab server to return the available instruments for the selected unit.
+The user is transferred to the next webpage which lists the returned instruments. 
+
+Individual instruments can be selected for data collection.
+Alternatively, there is a "checkall" button that will select all available instruments.
+A similar input process for the time information is used to finalize the data request form.
+The "Download Data" button is then selected, which will connect to the server and return a .csv file containing the requested data of the selected instruments.
+
+The buttons used to request data were reprogrammed.
+Instead of only requiring a valid "time of day" range, the validation was updated to check for all inputs.
+Each input is required before the button becomes available on every webpage.
+
+
 
 # DO NOT TOUCH MAIN
 ## How To Merge
