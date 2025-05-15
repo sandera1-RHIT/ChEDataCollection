@@ -55,7 +55,7 @@ def instrumentation():
         logging.info("Found %s PI points for project %s", len(points), project)
         logging.info("Colecting instruments")
         instruments = [f"{point.name}" for point in points]
-        return render_template('instrumentation.html', options=instruments)
+        return render_template('instrumentation.html', options=instruments, project=project)
 
 
 @app.route('/download', methods=["POST"])
